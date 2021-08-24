@@ -1,0 +1,13 @@
+C:\Users\soham\source\repos\SwiggyInterview\SwiggyInterview\obj\Debug\netcoreapp3.1\SwiggyInterview.csproj.AssemblyReference.cache
+C:\Users\soham\source\repos\SwiggyInterview\SwiggyInterview\obj\Debug\netcoreapp3.1\SwiggyInterview.AssemblyInfoInputs.cache
+C:\Users\soham\source\repos\SwiggyInterview\SwiggyInterview\obj\Debug\netcoreapp3.1\SwiggyInterview.AssemblyInfo.cs
+C:\Users\soham\source\repos\SwiggyInterview\SwiggyInterview\obj\Debug\netcoreapp3.1\SwiggyInterview.csproj.CoreCompileInputs.cache
+C:\Users\soham\source\repos\SwiggyInterview\SwiggyInterview\bin\Debug\netcoreapp3.1\SwiggyInterview.exe
+C:\Users\soham\source\repos\SwiggyInterview\SwiggyInterview\bin\Debug\netcoreapp3.1\SwiggyInterview.deps.json
+C:\Users\soham\source\repos\SwiggyInterview\SwiggyInterview\bin\Debug\netcoreapp3.1\SwiggyInterview.runtimeconfig.json
+C:\Users\soham\source\repos\SwiggyInterview\SwiggyInterview\bin\Debug\netcoreapp3.1\SwiggyInterview.runtimeconfig.dev.json
+C:\Users\soham\source\repos\SwiggyInterview\SwiggyInterview\bin\Debug\netcoreapp3.1\SwiggyInterview.dll
+C:\Users\soham\source\repos\SwiggyInterview\SwiggyInterview\bin\Debug\netcoreapp3.1\SwiggyInterview.pdb
+C:\Users\soham\source\repos\SwiggyInterview\SwiggyInterview\obj\Debug\netcoreapp3.1\SwiggyInterview.dll
+C:\Users\soham\source\repos\SwiggyInterview\SwiggyInterview\obj\Debug\netcoreapp3.1\SwiggyInterview.pdb
+C:\Users\soham\source\repos\SwiggyInterview\SwiggyInterview\obj\Debug\netcoreapp3.1\SwiggyInterview.genruntimeconfig.cache
