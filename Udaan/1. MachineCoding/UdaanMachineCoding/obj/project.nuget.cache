@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "wRVFdEqaeb5FjF9LkP5cU7LQZ+UOhVl6SbBwWrR+f8briRY2Wfy0UGle16i7TSjQHg6YnWKx/65fZ7c4lEO/BQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\soham\\source\\repos\\UdaanMachineCoding\\UdaanMachineCoding\\UdaanMachineCoding.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\soham\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\5.0.2\\microsoft.extensions.dependencyinjection.5.0.2.nupkg.sha512",
+    "C:\\Users\\soham\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\5.0.0\\microsoft.extensions.dependencyinjection.abstractions.5.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

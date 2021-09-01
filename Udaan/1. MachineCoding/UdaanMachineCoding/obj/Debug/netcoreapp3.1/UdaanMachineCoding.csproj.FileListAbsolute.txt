@@ -1,0 +1,17 @@
+C:\Users\soham\source\repos\UdaanMachineCoding\UdaanMachineCoding\bin\Debug\netcoreapp3.1\UdaanMachineCoding.exe
+C:\Users\soham\source\repos\UdaanMachineCoding\UdaanMachineCoding\bin\Debug\netcoreapp3.1\UdaanMachineCoding.deps.json
+C:\Users\soham\source\repos\UdaanMachineCoding\UdaanMachineCoding\bin\Debug\netcoreapp3.1\UdaanMachineCoding.runtimeconfig.json
+C:\Users\soham\source\repos\UdaanMachineCoding\UdaanMachineCoding\bin\Debug\netcoreapp3.1\UdaanMachineCoding.runtimeconfig.dev.json
+C:\Users\soham\source\repos\UdaanMachineCoding\UdaanMachineCoding\bin\Debug\netcoreapp3.1\UdaanMachineCoding.dll
+C:\Users\soham\source\repos\UdaanMachineCoding\UdaanMachineCoding\bin\Debug\netcoreapp3.1\UdaanMachineCoding.pdb
+C:\Users\soham\source\repos\UdaanMachineCoding\UdaanMachineCoding\obj\Debug\netcoreapp3.1\UdaanMachineCoding.csproj.AssemblyReference.cache
+C:\Users\soham\source\repos\UdaanMachineCoding\UdaanMachineCoding\obj\Debug\netcoreapp3.1\UdaanMachineCoding.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\soham\source\repos\UdaanMachineCoding\UdaanMachineCoding\obj\Debug\netcoreapp3.1\UdaanMachineCoding.AssemblyInfoInputs.cache
+C:\Users\soham\source\repos\UdaanMachineCoding\UdaanMachineCoding\obj\Debug\netcoreapp3.1\UdaanMachineCoding.AssemblyInfo.cs
+C:\Users\soham\source\repos\UdaanMachineCoding\UdaanMachineCoding\obj\Debug\netcoreapp3.1\UdaanMachineCoding.csproj.CoreCompileInputs.cache
+C:\Users\soham\source\repos\UdaanMachineCoding\UdaanMachineCoding\obj\Debug\netcoreapp3.1\UdaanMachineCoding.dll
+C:\Users\soham\source\repos\UdaanMachineCoding\UdaanMachineCoding\obj\Debug\netcoreapp3.1\UdaanMachineCoding.pdb
+C:\Users\soham\source\repos\UdaanMachineCoding\UdaanMachineCoding\obj\Debug\netcoreapp3.1\UdaanMachineCoding.genruntimeconfig.cache
+C:\Users\soham\source\repos\UdaanMachineCoding\UdaanMachineCoding\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\soham\source\repos\UdaanMachineCoding\UdaanMachineCoding\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\soham\source\repos\UdaanMachineCoding\UdaanMachineCoding\obj\Debug\netcoreapp3.1\UdaanMachineCoding.csproj.CopyComplete
