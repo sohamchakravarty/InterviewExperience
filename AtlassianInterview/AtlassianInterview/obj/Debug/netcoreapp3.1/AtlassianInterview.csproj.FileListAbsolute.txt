@@ -1,0 +1,17 @@
+C:\Users\soham\source\repos\AtlassianInterview\AtlassianInterview\bin\Debug\netcoreapp3.1\AtlassianInterview.exe
+C:\Users\soham\source\repos\AtlassianInterview\AtlassianInterview\bin\Debug\netcoreapp3.1\AtlassianInterview.deps.json
+C:\Users\soham\source\repos\AtlassianInterview\AtlassianInterview\bin\Debug\netcoreapp3.1\AtlassianInterview.runtimeconfig.json
+C:\Users\soham\source\repos\AtlassianInterview\AtlassianInterview\bin\Debug\netcoreapp3.1\AtlassianInterview.runtimeconfig.dev.json
+C:\Users\soham\source\repos\AtlassianInterview\AtlassianInterview\bin\Debug\netcoreapp3.1\AtlassianInterview.dll
+C:\Users\soham\source\repos\AtlassianInterview\AtlassianInterview\bin\Debug\netcoreapp3.1\AtlassianInterview.pdb
+C:\Users\soham\source\repos\AtlassianInterview\AtlassianInterview\obj\Debug\netcoreapp3.1\AtlassianInterview.csproj.AssemblyReference.cache
+C:\Users\soham\source\repos\AtlassianInterview\AtlassianInterview\obj\Debug\netcoreapp3.1\AtlassianInterview.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\soham\source\repos\AtlassianInterview\AtlassianInterview\obj\Debug\netcoreapp3.1\AtlassianInterview.AssemblyInfoInputs.cache
+C:\Users\soham\source\repos\AtlassianInterview\AtlassianInterview\obj\Debug\netcoreapp3.1\AtlassianInterview.AssemblyInfo.cs
+C:\Users\soham\source\repos\AtlassianInterview\AtlassianInterview\obj\Debug\netcoreapp3.1\AtlassianInterview.csproj.CoreCompileInputs.cache
+C:\Users\soham\source\repos\AtlassianInterview\AtlassianInterview\obj\Debug\netcoreapp3.1\AtlassianInterview.dll
+C:\Users\soham\source\repos\AtlassianInterview\AtlassianInterview\obj\Debug\netcoreapp3.1\AtlassianInterview.pdb
+C:\Users\soham\source\repos\AtlassianInterview\AtlassianInterview\obj\Debug\netcoreapp3.1\AtlassianInterview.genruntimeconfig.cache
+C:\Users\soham\source\repos\AtlassianInterview\AtlassianInterview\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+C:\Users\soham\source\repos\AtlassianInterview\AtlassianInterview\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+C:\Users\soham\source\repos\AtlassianInterview\AtlassianInterview\obj\Debug\netcoreapp3.1\AtlassianInterview.csproj.CopyComplete

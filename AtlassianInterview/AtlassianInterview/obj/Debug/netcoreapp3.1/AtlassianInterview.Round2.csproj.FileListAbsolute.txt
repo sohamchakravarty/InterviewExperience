@@ -1,0 +1,17 @@
+C:\Users\soham\source\repos\AtlassianInterview\AtlassianInterview\bin\Debug\netcoreapp3.1\AtlassianInterview.Round2.exe
+C:\Users\soham\source\repos\AtlassianInterview\AtlassianInterview\bin\Debug\netcoreapp3.1\AtlassianInterview.Round2.deps.json
+C:\Users\soham\source\repos\AtlassianInterview\AtlassianInterview\bin\Debug\netcoreapp3.1\AtlassianInterview.Round2.runtimeconfig.json
+C:\Users\soham\source\repos\AtlassianInterview\AtlassianInterview\bin\Debug\netcoreapp3.1\AtlassianInterview.Round2.runtimeconfig.dev.json
+C:\Users\soham\source\repos\AtlassianInterview\AtlassianInterview\bin\Debug\netcoreapp3.1\AtlassianInterview.Round2.dll
+C:\Users\soham\source\repos\AtlassianInterview\AtlassianInterview\bin\Debug\netcoreapp3.1\AtlassianInterview.Round2.pdb
+C:\Users\soham\source\repos\AtlassianInterview\AtlassianInterview\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+C:\Users\soham\source\repos\AtlassianInterview\AtlassianInterview\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+C:\Users\soham\source\repos\AtlassianInterview\AtlassianInterview\obj\Debug\netcoreapp3.1\AtlassianInterview.Round2.csproj.AssemblyReference.cache
+C:\Users\soham\source\repos\AtlassianInterview\AtlassianInterview\obj\Debug\netcoreapp3.1\AtlassianInterview.Round2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\soham\source\repos\AtlassianInterview\AtlassianInterview\obj\Debug\netcoreapp3.1\AtlassianInterview.Round2.AssemblyInfoInputs.cache
+C:\Users\soham\source\repos\AtlassianInterview\AtlassianInterview\obj\Debug\netcoreapp3.1\AtlassianInterview.Round2.AssemblyInfo.cs
+C:\Users\soham\source\repos\AtlassianInterview\AtlassianInterview\obj\Debug\netcoreapp3.1\AtlassianInterview.Round2.csproj.CoreCompileInputs.cache
+C:\Users\soham\source\repos\AtlassianInterview\AtlassianInterview\obj\Debug\netcoreapp3.1\AtlassianInterview.Round2.csproj.CopyComplete
+C:\Users\soham\source\repos\AtlassianInterview\AtlassianInterview\obj\Debug\netcoreapp3.1\AtlassianInterview.Round2.dll
+C:\Users\soham\source\repos\AtlassianInterview\AtlassianInterview\obj\Debug\netcoreapp3.1\AtlassianInterview.Round2.pdb
+C:\Users\soham\source\repos\AtlassianInterview\AtlassianInterview\obj\Debug\netcoreapp3.1\AtlassianInterview.Round2.genruntimeconfig.cache
