@@ -1,1 +1,1 @@
-This repository contains the solutions of questions asked in interview experiences.
+This repository contains the solutions of questions asked in company interview experiences.
