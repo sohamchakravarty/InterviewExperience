@@ -1,0 +1,1 @@
+This repository contains the solutions of questions asked in interview experiences.
