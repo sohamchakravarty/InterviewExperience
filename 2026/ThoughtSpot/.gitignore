@@ -1,0 +1,23 @@
+# IDE
+.idea/
+.vscode/
+*.iml
+*.swp
+*.swo
+
+# Build
+target/
+build/
+dist/
+
+# Maven
+.m2/
+
+# Compiled
+*.class
+*.jar
+*.war
+
+# Misc
+.DS_Store
+*.log

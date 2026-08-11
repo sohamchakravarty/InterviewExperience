@@ -1,0 +1,490 @@
+{
+  "info": {
+    "name": "Legacy Order Platform",
+    "_postman_id": "8ec31df1-bc21-4bd7-98c5-3b7ac3f72f01",
+    "description": "Postman collection for the legacy Java interview service. Includes smoke checks and candidate acceptance checks.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "if (!pm.environment.get('baseUrl')) {",
+          "  pm.environment.set('baseUrl', 'http://localhost:8080');",
+          "}",
+          "if (!pm.environment.get('testRunId')) {",
+          "  pm.environment.set('testRunId', String(Date.now()));",
+          "}",
+          "if (!pm.environment.get('requestId')) {",
+          "  pm.environment.set('requestId', 'req-' + Date.now());",
+          "}"
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080"
+    }
+  ],
+  "item": [
+    {
+      "name": "Smoke Tests",
+      "description": "Requests expected to work against the current legacy implementation.",
+      "item": [
+        {
+          "name": "Health",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('status is 200', function () {",
+                  "  pm.response.to.have.status(200);",
+                  "});",
+                  "const json = pm.response.json();",
+                  "pm.test('health payload shape is present', function () {",
+                  "  pm.expect(json.status).to.eql('ok');",
+                  "  pm.expect(json).to.have.property('orders');",
+                  "  pm.expect(json).to.have.property('cacheEntries');",
+                  "  pm.expect(json).to.have.property('auditEvents');",
+                  "  pm.expect(json).to.have.property('reconciliationSnapshots');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/health",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "health"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create Order",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.environment.set('smokeExternalId', 'smoke-' + Date.now());",
+                  "pm.environment.set('smokeRequestId', 'smoke-req-' + Date.now());"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('status is 201', function () {",
+                  "  pm.response.to.have.status(201);",
+                  "});",
+                  "const json = pm.response.json();",
+                  "pm.environment.set('createdOrderId', json.id);",
+                  "pm.environment.set('createdExternalId', json.externalId);",
+                  "pm.environment.set('createdPaymentReference', json.paymentReference);",
+                  "pm.test('created order response has expected fields', function () {",
+                  "  pm.expect(json).to.have.property('id');",
+                  "  pm.expect(json.customerId).to.eql('cust-1');",
+                  "  pm.expect(json.externalId).to.eql(pm.environment.get('smokeExternalId'));",
+                  "  pm.expect(json.status).to.eql('CREATED');",
+                  "  pm.expect(json.items).to.be.an('array').with.length(2);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "X-Request-Id",
+                "value": "{{smokeRequestId}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customerId\": \"cust-1\",\n  \"externalId\": \"{{smokeExternalId}}\",\n  \"currency\": \"USD\",\n  \"promoCode\": \"SAVE10\",\n  \"expedite\": true,\n  \"items\": [\n    {\n      \"sku\": \"A-100\",\n      \"quantity\": 2,\n      \"unitPrice\": 19.95\n    },\n    {\n      \"sku\": \"B-200\",\n      \"quantity\": 1,\n      \"unitPrice\": 5.49\n    }\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/orders",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "orders"
+              ]
+            }
+          }
+        },
+        {
+          "name": "List Orders",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('status is 200', function () {",
+                  "  pm.response.to.have.status(200);",
+                  "});",
+                  "const json = pm.response.json();",
+                  "pm.test('list contains the created order', function () {",
+                  "  pm.expect(json).to.be.an('array');",
+                  "  const createdOrderId = pm.environment.get('createdOrderId');",
+                  "  const found = json.some(order => order.id === createdOrderId);",
+                  "  pm.expect(found).to.eql(true);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/orders",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "orders"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Admin Report",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('status is 200', function () {",
+                  "  pm.response.to.have.status(200);",
+                  "});",
+                  "const text = pm.response.text();",
+                  "pm.test('report looks like csv', function () {",
+                  "  pm.expect(text).to.include('id,customerId,status,total,currency,createdAt,paymentReference,chargedAmount');",
+                  "});",
+                  "pm.test('report contains created order id', function () {",
+                  "  const createdOrderId = pm.environment.get('createdOrderId');",
+                  "  pm.expect(text).to.include(createdOrderId);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/admin/report",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "admin",
+                "report"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Legacy Duplicate By ExternalId - First Request",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "if (!pm.environment.get('legacyDuplicateExternalId')) {",
+                  "  pm.environment.set('legacyDuplicateExternalId', 'dup-' + Date.now());",
+                  "}",
+                  "pm.environment.set('legacyDuplicateRequestId1', 'dup-req-1-' + Date.now());"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('status is 201', function () {",
+                  "  pm.response.to.have.status(201);",
+                  "});",
+                  "const json = pm.response.json();",
+                  "pm.environment.set('legacyDuplicateOrderId', json.id);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "X-Request-Id",
+                "value": "{{legacyDuplicateRequestId1}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customerId\": \"cust-2\",\n  \"externalId\": \"{{legacyDuplicateExternalId}}\",\n  \"currency\": \"USD\",\n  \"promoCode\": \"\",\n  \"expedite\": false,\n  \"items\": [\n    {\n      \"sku\": \"A-100\",\n      \"quantity\": 1,\n      \"unitPrice\": 29.99\n    }\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/orders",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "orders"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Legacy Duplicate By ExternalId - Second Request",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.environment.set('legacyDuplicateRequestId2', 'dup-req-2-' + Date.now());"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('status is 201', function () {",
+                  "  pm.response.to.have.status(201);",
+                  "});",
+                  "const json = pm.response.json();",
+                  "pm.test('legacy externalId cache returns same order id', function () {",
+                  "  pm.expect(json.id).to.eql(pm.environment.get('legacyDuplicateOrderId'));",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "X-Request-Id",
+                "value": "{{legacyDuplicateRequestId2}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customerId\": \"cust-2\",\n  \"externalId\": \"{{legacyDuplicateExternalId}}\",\n  \"currency\": \"USD\",\n  \"promoCode\": \"\",\n  \"expedite\": false,\n  \"items\": [\n    {\n      \"sku\": \"A-100\",\n      \"quantity\": 1,\n      \"unitPrice\": 29.99\n    }\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/orders",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "orders"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Candidate Acceptance Tests",
+      "description": "These tests are intended to fail on the starter code until the candidate implements the requested behavior.",
+      "item": [
+        {
+          "name": "Idempotent Create By X-Request-Id - First Request",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.environment.set('candidateRequestId', 'candidate-req-' + Date.now());",
+                  "pm.environment.set('candidateExternalId1', 'candidate-ext-1-' + Date.now());",
+                  "pm.environment.set('candidateExternalId2', 'candidate-ext-2-' + Date.now());"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('status is 201', function () {",
+                  "  pm.response.to.have.status(201);",
+                  "});",
+                  "const json = pm.response.json();",
+                  "pm.environment.set('candidateRequestIdOrderId', json.id);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "X-Request-Id",
+                "value": "{{candidateRequestId}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customerId\": \"cust-2\",\n  \"externalId\": \"{{candidateExternalId1}}\",\n  \"currency\": \"USD\",\n  \"promoCode\": \"\",\n  \"expedite\": false,\n  \"items\": [\n    {\n      \"sku\": \"A-100\",\n      \"quantity\": 1,\n      \"unitPrice\": 12.00\n    }\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/orders",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "orders"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Idempotent Create By X-Request-Id - Replay Request",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('status is 201', function () {",
+                  "  pm.response.to.have.status(201);",
+                  "});",
+                  "const json = pm.response.json();",
+                  "pm.test('same X-Request-Id returns same order id even when externalId differs', function () {",
+                  "  pm.expect(json.id).to.eql(pm.environment.get('candidateRequestIdOrderId'));",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "X-Request-Id",
+                "value": "{{candidateRequestId}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customerId\": \"cust-2\",\n  \"externalId\": \"{{candidateExternalId2}}\",\n  \"currency\": \"USD\",\n  \"promoCode\": \"\",\n  \"expedite\": false,\n  \"items\": [\n    {\n      \"sku\": \"A-100\",\n      \"quantity\": 1,\n      \"unitPrice\": 12.00\n    }\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/orders",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "orders"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Promo FREESHIP Waives Shipping Only",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.environment.set('freeShipExternalId', 'freeship-' + Date.now());",
+                  "pm.environment.set('freeShipRequestId', 'freeship-req-' + Date.now());"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('status is 201', function () {",
+                  "  pm.response.to.have.status(201);",
+                  "});",
+                  "const json = pm.response.json();",
+                  "pm.test('FREESHIP removes standard shipping but keeps subtotal and tax', function () {",
+                  "  const expected = 10.825;",
+                  "  pm.expect(Math.abs(json.total - expected) < 0.0001).to.eql(true);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "X-Request-Id",
+                "value": "{{freeShipRequestId}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customerId\": \"cust-2\",\n  \"externalId\": \"{{freeShipExternalId}}\",\n  \"currency\": \"USD\",\n  \"promoCode\": \"FREESHIP\",\n  \"expedite\": false,\n  \"items\": [\n    {\n      \"sku\": \"A-100\",\n      \"quantity\": 1,\n      \"unitPrice\": 10.00\n    }\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/orders",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "orders"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

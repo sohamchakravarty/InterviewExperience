@@ -1,0 +1,24 @@
+# ==========================================
+# macOS Boilerplate .gitignore
+# ==========================================
+
+# Folder metadata and view settings
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Icon caches and files
+Icon?
+._*
+
+# Thumbnails and files created by the Finder
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Directories potentially created by file system quirks
+[Dd]s_[Ss]tore

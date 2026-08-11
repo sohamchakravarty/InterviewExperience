@@ -1,0 +1,21 @@
+HTTP Load Balancer
+Your job is to build a simple http load balancer that reads a set of backend http URLS and is able to respond to the client queries. Your service will bootstrap itself with a list of backend IP addresses for server instances, do constant health checks on them and ensure that the backend services are up and active. In case of a backend failure, the load balancer will remove that server from serving active traffic.
+Kind of load balancing should be configurable at a per endpoint level.
+
+Examples
+/api/v1/users , round robin to IPs from service A
+/api/v1/payments , <some other LB method> to IPs from service B
+
+Service A
+IP List = [a,b,c]
+
+Service B
+IP List = [d,e,f]
+
+
+func routeToIP(string endpoint) string ip {
+…
+}
+
+Endpoint -> service
+LB strategy for a service

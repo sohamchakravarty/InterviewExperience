@@ -1,0 +1,53 @@
+Endpoint -> service
+LB strategy for a service
+IPs to a service will change based on availability
+
+
+----
+
+func routeToIP(string endpoint) string ip {
+}
+
+---
+
+Entities
+
+IPAddress {
+    String id;
+    Boolean isHealthy;
+}
+
+Service implements LoadBalancingStrategy {
+    String serviceId;
+    
+    List<IPAddress> ipAddresses;
+
+    List<String> endPoints;
+}
+
+------
+
+Contracts
+
+LoadBalancingStrategy {
+    getIpAddress()
+}
+
+LoadBalancer
+routeToIP(string endpoint)
+
+
+-----
+
+Strategies 
+
+- Round robin
+- Consistent Hashing
+
+
+------
+
+Strategy Implementations
+Routing Management
+
+ipAddresses
