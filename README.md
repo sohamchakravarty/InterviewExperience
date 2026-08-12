@@ -1,1 +1,1 @@
-This repository contains the solutions of questions asked in company interview experiences.
+This repository contains the solutions of questions asked in my interview experiences of Coding & DSA rounds with different companies.
